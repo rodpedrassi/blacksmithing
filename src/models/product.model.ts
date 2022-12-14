@@ -1,6 +1,6 @@
-import { ResultSetHeader } from 'mysql2';
+import { ResultSetHeader, RowDataPacket } from 'mysql2';
 import connection from './connection';
-// import Product from '../interfaces/Product';
+import { Product } from '../types/index';
 
 const createProduct = async (name: string, amount: string) => {
   const [{ insertId }] = await connection.execute<ResultSetHeader>(
@@ -17,13 +17,14 @@ const createProduct = async (name: string, amount: string) => {
   return newProduct;
 };
 
-export default { createProduct };
-//   async findAll() {
-//     const [result] = await connection.execute<IProduct[]>(
-//       'SELECT * FROM products ORDER BY id',
-//     );
-//     return result;
-//   }
+const findAllProducts = async () => {
+  const [result] = await connection.execute<RowDataPacket[] & Product[]>(
+    'SELECT * FROM Trybesmith.products ORDER BY id',
+  );
+  return result;
+};
+
+export default { createProduct, findAllProducts };
 
 //   async findOne(id: number) {
 //     const [[result]] = await connection.execute<IProduct[]>(
