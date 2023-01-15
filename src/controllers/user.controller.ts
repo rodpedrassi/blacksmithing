@@ -6,4 +6,12 @@ const createUser = async (req: Request, res: Response) => {
   res.status(201).json({ token });
 };
 
-export default { createUser };
+const getUserByName = async (req: Request, res: Response) => {
+  const user = req.body;
+  const { type, message } = await userService.findUserByUsername(user);
+  if (type) return res.status(type).json({ message });
+
+  res.status(200).json({ token: message });
+};
+
+export default { createUser, getUserByName };
