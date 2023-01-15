@@ -5,6 +5,12 @@ export type Product = {
   orderId?: number,
 };
 
+export type Order = {
+  id: number;
+  userId: number;
+  productsIds: number[];
+};
+
 export type Users = {
   id?: number,
   username: string,
