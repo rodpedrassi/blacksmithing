@@ -13,7 +13,6 @@ Built with:
 - [Express.js](https://expressjs.com/)
 - [MySQL](https://www.mysql.com/)
 - [JWT](https://jwt.io/)
-- [Joi](https://joi.dev/)
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
 
